@@ -4,7 +4,7 @@ DB_NAME = 'dns.db'
 dbh = RDBI.connect(:SQLite3, :database => DB_NAME)
 socket = UDPSocket.new
 socket.bind("", 2100)
-
+retorno = nil
 loop{
         data, sender = socket.recvfrom(1024)
         s_ip = sender[3]
