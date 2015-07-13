@@ -1,0 +1,5 @@
+CREATE TABLE "dominio" (
+	`dominio`	TEXT NOT NULL,
+	`ip`	INTEGER NOT NULL,
+	PRIMARY KEY(dominio)
+);
