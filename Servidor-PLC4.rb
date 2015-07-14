@@ -23,6 +23,7 @@ loop {
 		if data[1] != nil
 			sel = dbh.execute("select ip from dominio where dominio = '" + data[1] + "'")
 			sel.fetch(:all).each do |row|
+			puts row[0]
 			retorno = row[0]
 		end
 		if retorno != nil
