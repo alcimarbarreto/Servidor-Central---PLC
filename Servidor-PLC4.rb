@@ -1,6 +1,6 @@
 require 'socket'
 require 'rdbi-driver-sqlite3'
-DB_NAME = 'banco.db'
+DB_NAME = 'dns.db'
 dbh = RDBI.connect(:SQLite3, :database => DB_NAME)
 socket = UDPSocket.new
 socket.bind("", 2100)
@@ -21,11 +21,10 @@ loop {
 		end
 	elsif data[0] == "IP" && data.length == 2
 		if data[1] != nil
-			sel = dbh.execute("select IP from dominio where dominio = '" + data[1] + "'")
+			sel = dbh.execute("select ip from dominio where dominio = '" + data[1] + "'")
 			sel.fetch(:all).each do |row|
 			retorno = row[0]
-			end
-		puts retorno
+		end
 		if retorno != nil
 		socket.send("IPOK #{retorno}", 0, s_ip, s_port)
 			elsif retorno == nil
